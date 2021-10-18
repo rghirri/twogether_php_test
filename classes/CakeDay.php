@@ -3,9 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require "./classes/ExtraCode.php";
-
-class cakeDay{
+class CakeDay{
 
 
   public static function IsDateRow($nextDay, $currentDay, $thirdDate)
@@ -22,34 +20,6 @@ class cakeDay{
     }
     return false;
   
-}
-
-public static function IsDateDup($currentDay,$fileName)
-{
-  $dupDay = ExtraCode::datePattern($fileName);
-  $currentDay = new \DateTime($currentDay);
-  //$nextDay = new \DateTime($nextDay);
-  $currentDay = $currentDay->format('m-d');
-  //$nextDay = $nextDay->format('m-d');
-
-  //var_dump($dupDate);
- 
-  // if ((in_array($currentDay, $dupDay)) || (in_array($nextDay, $dupDay))){
-  //   return true;
-  // }else
-  // {
-  // return false;
-  // }
-
-  if ((in_array($currentDay, $dupDay)))
-  
-  {
-      return true;
-    }else
-    {
-    return false;
-    }
-
 }
 
 public static function IsDateFri($Daytest)
@@ -132,23 +102,7 @@ public static function IsDateBox($Daytest)
 
 }
 
-public static function IsDateNewYear($Daytest)
-{
-  $Daytest = new \DateTime($Daytest);
-  $Daytest = $Daytest->format('m-d');
-
-  if ($Daytest == "01-01")
-  
-  {
-      return true;
-    }else
-    {
-    return false;
-    }
-
-}
-
-public static function DisplayOutput($nextDay, $currentDay,$nextName, $currentName, $currentDays, $nextDays)
+public static function DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName, $currentDays, $nextDays)
 {
       
       $currentDayOriginal = new \DateTime($currentDay);
@@ -158,9 +112,20 @@ public static function DisplayOutput($nextDay, $currentDay,$nextName, $currentNa
       $birthCurrent = $currentDay->add(new DateInterval('P'.$currentDays.'D'));
       $birthNext = $nextDay->add(new DateInterval('P'.$nextDays.'D'));
 
-      echo "</br></br>****************************************************************** Birthdays in a Row ********************************************************************************</br></br>";
+      echo "</br></br>****************************************************************** Birthdays Row ********************************************************************************</br></br>";
       echo $currentName." born the ".$currentDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthCurrent->format('dS F Y')."</br></br>";
       echo $nextName." born the ".$nextDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthNext->format('dS F Y')."</br></br>";
+}
+
+public static function DisplayOutputSingle($currentDay,$currentName, $currentDays)
+{
+      
+      $currentDayOriginal = new \DateTime($currentDay);
+      $currentDay = new \DateTime($currentDay);
+      $birthCurrent = $currentDay->add(new DateInterval('P'.$currentDays.'D'));
+
+      echo "</br></br>****************************************************************** Birthdays Single ********************************************************************************</br></br>";
+      echo $currentName." born the ".$currentDayOriginal->format('dS F'). " has one cake on ".$birthCurrent->format('dS F Y')."</br></br>";
 }
 
 

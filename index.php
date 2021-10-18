@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 
 require "./classes/DataSend.php";
 require "./classes/RowDates.php";
+require "./classes/SingleDates.php";
 
 $fileName = 'employee-birthdates.txt';
 
@@ -44,13 +45,17 @@ while ($lineGeneratorEmployee->valid()) {
   //var_dump($nextPre);
 
   $IsDateRow = CakeDay::IsDateRow($nextDay, $currentDay, $thirdDate);
+ // $IsDateDup = CakeDay::IsDateDup($currentDay,$nextDay,$fileName);
 
-  if ($IsDateRow){
+  if ($IsDateRow)
+  {
 
       RowDates::rowCakeDay($nextDay, $currentDay,$nextName, $currentName);
       
+  }else
+  {
+    singleDates::singleCakeDay($currentDay, $currentName);
   }
-
 
  $lineGeneratorEmployee->next();
   

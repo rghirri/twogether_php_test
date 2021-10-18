@@ -1,5 +1,5 @@
 <?php 
-require "./classes/CakeDay.php";
+require_once "./classes/CakeDay.php";
 
 class RowDates{
 
@@ -29,62 +29,62 @@ class RowDates{
       if ($IsDateFriNext){
         $currentDays = '5';
         $nextDays = '4';
-        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+        CakeDay::DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
       }
       elseif ($IsDateFriCurrent){
         $currentDays = '4';
         $nextDays = '3';
-        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+        CakeDay::DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
       }
       elseif ($IsDateSatNext){
         $currentDays = '5';
         $nextDays = '4';
-        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+        CakeDay::DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
       }
       elseif ($IsDateSatCurrent){
         $currentDays = '3';
         $nextDays = '2';
-        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+        CakeDay::DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
       }
 
       elseif ($IsDateSunNext){
         $currentDays = '5';
         $nextDays = '4';
-        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+        CakeDay::DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
       }
       elseif ($IsDateSunCurrent){
         $currentDays = '3';
         $nextDays = '2';
-        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+        CakeDay::DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
       }
 
       elseif ($IsDateChrisNext){
         $currentDays = '5';
         $nextDays = '4';
-        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays,$year);
+        CakeDay::DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
       }
       elseif ($IsDateChrisCurrent){
         $currentDays = '3';
         $nextDays = '2';
-        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays,$year);
+        CakeDay::DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
       }
 
       elseif ($IsDateBoxNext){
         $currentDays = '5';
         $nextDays = '4';
-        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays,$year);
+        CakeDay::DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
       }
       elseif ($IsDateBoxCurrent){
         $currentDays = '3';
         $nextDays = '2';
-        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays,$year);
+        CakeDay::DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
       }
 
       else
       {
         $currentDays = '2';
         $nextDays = '1';
-        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+        CakeDay::DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
       }
 
   }
