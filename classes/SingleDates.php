@@ -3,7 +3,7 @@ require_once "./classes/CakeDay.php";
 
 class SingleDates{
 
-  public static function singleCakeDay($currentDay, $currentName){
+  public static function singleCakeDay($currentDay, $currentName,$fileCSVSingle){
     
     //  Fri, Sat, Sun, Christmasday, Boxingday, NewYear test
       // Fri
@@ -23,30 +23,30 @@ class SingleDates{
       /**************************************************** */
      if ($IsDateFriCurrent){
         $currentDays = '3';
-        CakeDay::DisplayOutputSingle($currentDay, $currentName,$currentDays);
+        CakeDay::DisplayOutputSingle($currentDay, $currentName,$currentDays,$fileCSVSingle);
       }
       elseif ($IsDateSatCurrent){
         $currentDays = '3';
-        CakeDay::DisplayOutputSingle($currentDay,$currentName,$currentDays);
+        CakeDay::DisplayOutputSingle($currentDay,$currentName,$currentDays,$fileCSVSingle);
       }
     elseif ($IsDateSunCurrent){
         $currentDays = '3';
-        CakeDay::DisplayOutputSingle($currentDay,$currentName,$currentDays);
+        CakeDay::DisplayOutputSingle($currentDay,$currentName,$currentDays,$fileCSVSingle);
       }
 
       elseif ($IsDateChrisCurrent){
         $currentDays = '3';
-        CakeDay::DisplayOutputSingle($currentDay, $currentName,$currentDays);
+        CakeDay::DisplayOutputSingle($currentDay, $currentName,$currentDays,$fileCSVSingle);
       }
       elseif ($IsDateBoxCurrent){
         $currentDays = '3';
-        CakeDay::DisplayOutputSingle($currentDay, $currentName,$currentDays);
+        CakeDay::DisplayOutputSingle($currentDay, $currentName,$currentDays,$fileCSVSingle);
       }
 
       else
       {
         $currentDays = '2';
-        CakeDay::DisplayOutputSingle($currentDay,$currentName,$currentDays);
+        CakeDay::DisplayOutputSingle($currentDay,$currentName,$currentDays,$fileCSVSingle);
       }
 
   }

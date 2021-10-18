@@ -2,24 +2,40 @@
 
 class CSV{
 
-  public static function CSVcreateRow($array){
-    $fp = fopen('cakedayRow.csv', 'w');
+  // public static function CSVcreateRow($line,$fileCSV){
 
-    foreach ($array as $lines) {
-        fputcsv($fp, $lines);
-    }
+  //   fwrite($fileCSV, $line);
 
-    fclose($fp);
+  //   fclose($fileCSV);
+  // }
+
+  // public static function CSVcreateSingle($line,$fileCSV){
+
+  //   fwrite($fileCSV, $line);
+
+  //   fclose($fileCSV);
+  // }
+
+ 
+
+public static function CSVcreateRow($array,$fileCSV){
+
+
+  foreach ($array as $line) {
+    fwrite($fileCSV, $line);
+}
+
+fclose($fileCSV);
+}
+
+  public static function CSVcreateSingle($array,$fileCSV){
+
+    foreach ($array as $line) {
+      fwrite($fileCSV, $line);
+  }
+  
+  fclose($fileCSV);
   }
 
-  public static function CSVcreateSingle($array){
-    $fp = fopen('cakedaySingle.csv', 'w');
-
-    foreach ($array as $lines) {
-        fputcsv($fp, $lines);
-    }
-
-    fclose($fp);
-  }
 
 }

@@ -9,6 +9,8 @@ require "./classes/SingleDates.php";
 
 
 $fileName = 'employee-birthdates.txt';
+$fileCSVRow = fopen("cakedayRow.csv", "w") or die("Unable to open file!");
+$fileCSVSingle = fopen("cakedaySingle.csv", "w") or die("Unable to open file!");
 
 
 
@@ -53,11 +55,11 @@ while ($lineGeneratorEmployee->valid()) {
   if ($IsDateRow)
   {
 
-      RowDates::rowCakeDay($nextDay, $currentDay,$nextName, $currentName);
+      RowDates::rowCakeDay($nextDay, $currentDay,$nextName, $currentName, $fileCSVRow);
       
   }else
   {
-    singleDates::singleCakeDay($currentDay, $currentName);
+    singleDates::singleCakeDay($currentDay, $currentName,$fileCSVSingle);
   }
 
  $lineGeneratorEmployee->next();
