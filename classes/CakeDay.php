@@ -117,7 +117,7 @@ public static function DisplayOutputRow($nextDay, $currentDay,$nextName, $curren
       // echo "</br></br>****************************************************************** Birthdays Row ********************************************************************************</br></br>";
       // echo $currentName." born the ".$currentDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthCurrent->format('dS F Y')."</br></br>";
       // echo $nextName." born the ".$nextDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthNext->format('dS F Y')."</br></br>";
-       $csvRow =array("CakeDay" => $birthCurrent->format('dS F Y'), "CakeType" => " One Large Cake", "NameOne " => $currentName." DateOfBirth is ".$currentDayOriginal->format('dS F'), "NameTwo" => " and ".$nextName." DateOfBirth is ".$nextDayOriginal->format('dS F'));
+       $csvRow =array("CakeDay" => " Cake day is ".$birthCurrent->format('dS F Y'), "CakeType" => " One Large Cake to share for ", "NameOne " => $currentName." DateOfBirth ".$currentDayOriginal->format('dS F'), "NameTwo" => " and ".$nextName." DateOfBirth ".$nextDayOriginal->format('dS F')."\n");
       //$csvRow = $birthCurrent->format('dS F Y').', One Large Cake '.$currentName." DateOfBirth is ".$currentDayOriginal->format('dS F')." and ".$nextName." DateOfBirth is ".$nextDayOriginal->format('dS F');
       //var_dump($csvRow);
       
@@ -136,7 +136,7 @@ public static function DisplayOutputSingle($currentDay,$currentName, $currentDay
       // echo "</br></br>****************************************************************** Birthdays Single ********************************************************************************</br></br>";
       // echo $currentName." born the ".$currentDayOriginal->format('dS F'). " has one cake on ".$birthCurrent->format('dS F Y')."</br></br>";
       
-      $csvSingle =array("CakeDay" => $birthCurrent->format('dS F Y'), "CakeType" => " One Small Cake ", "NameOne" => $currentName." DateOfBirth is ".$currentDayOriginal->format('dS F'));
+      $csvSingle =array("CakeDay" => "Cake day is ".$birthCurrent->format('dS F Y'), "CakeType" => " One Small Cake for ", "NameOne" => $currentName." DateOfBirth ".$currentDayOriginal->format('dS F')."\n");
 
       //$csvSingle = $birthCurrent->format('dS F Y').', One Small Cake '.$currentName." DateOfBirth is ".$currentDayOriginal->format('dS F');
       //var_dump($csvSingle);

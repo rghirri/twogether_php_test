@@ -65,3 +65,6 @@ while ($lineGeneratorEmployee->valid()) {
  $lineGeneratorEmployee->next();
   
 }
+
+fclose($fileCSVRow);
+fclose($fileCSVSingle);
