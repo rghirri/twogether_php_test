@@ -8,14 +8,14 @@ require "./classes/ExtraCode.php";
 class cakeDay{
 
 
-  public static function IsDateRow($nextDay, $currentDay, $nextPre)
+  public static function IsDateRow($nextDay, $currentDay, $thirdDate)
   {
 
     $currentDay = new \DateTime($currentDay);
     $nextDay = new \DateTime($nextDay);
-    $nextPre = new \DateTime($nextPre);
+    $thirdDate = new \DateTime($thirdDate);
     $dateDiff = date_diff($nextDay, $currentDay);
-    $dateDiffPre = date_diff($nextPre, $currentDay);
+    $dateDiffPre = date_diff($thirdDate, $currentDay);
 
     if (($dateDiff->d == 1) && ($dateDiffPre->d != 2)){
       return true;
@@ -158,7 +158,7 @@ public static function DisplayOutput($nextDay, $currentDay,$nextName, $currentNa
       $birthCurrent = $currentDay->add(new DateInterval('P'.$currentDays.'D'));
       $birthNext = $nextDay->add(new DateInterval('P'.$nextDays.'D'));
 
-
+      echo "</br></br>****************************************************************** Birthdays in a Row ********************************************************************************</br></br>";
       echo $currentName." born the ".$currentDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthCurrent->format('dS F Y')."</br></br>";
       echo $nextName." born the ".$nextDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthNext->format('dS F Y')."</br></br>";
 }
