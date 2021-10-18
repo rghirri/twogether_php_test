@@ -106,6 +106,7 @@ public static function IsDateBox($Daytest)
 
 public static function DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName, $currentDays, $nextDays)
 {
+      $csvRow = [];
       $currentDayOriginal = new \DateTime($currentDay);
       $nextDayOriginal = new \DateTime($nextDay);
       $currentDay = new \DateTime($currentDay);
@@ -116,7 +117,7 @@ public static function DisplayOutputRow($nextDay, $currentDay,$nextName, $curren
       // echo "</br></br>****************************************************************** Birthdays Row ********************************************************************************</br></br>";
       // echo $currentName." born the ".$currentDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthCurrent->format('dS F Y')."</br></br>";
       // echo $nextName." born the ".$nextDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthNext->format('dS F Y')."</br></br>";
-       $csvRow = $birthCurrent->format('dS F Y').', One Large Cake '.$currentName." DateOfBirth is ".$currentDayOriginal->format('dS F')." and ".$nextName." DateOfBirth is ".$nextDayOriginal->format('dS F');
+       $csvRow =array("CakeDay" => $birthCurrent->format('dS F Y'), "CakeType" => "One Large Cake", "NameOne" => $currentName." DateOfBirth is ".$currentDayOriginal->format('dS F'), "NameTwo" => "and".$nextName." DateOfBirth is ".$nextDayOriginal->format('dS F'));
       //var_dump($csvRow);
       CSV::CSVcreateRow($csvRow);
       //var_dump($csvRow);
@@ -125,6 +126,7 @@ public static function DisplayOutputRow($nextDay, $currentDay,$nextName, $curren
 
 public static function DisplayOutputSingle($currentDay,$currentName, $currentDays)
 {
+      $csvSingle = [];
       $currentDayOriginal = new \DateTime($currentDay);
       $currentDay = new \DateTime($currentDay);
       $birthCurrent = $currentDay->add(new DateInterval('P'.$currentDays.'D'));
@@ -133,7 +135,7 @@ public static function DisplayOutputSingle($currentDay,$currentName, $currentDay
       // echo $currentName." born the ".$currentDayOriginal->format('dS F'). " has one cake on ".$birthCurrent->format('dS F Y')."</br></br>";
       
 
-      $csvSingle = $birthCurrent->format('dS F Y').', One Small Cake '.$currentName." DateOfBirth is ".$currentDayOriginal->format('dS F');
+      $csvSingle = array("CakeDay" => $birthCurrent->format('dS F Y'), "CakeType" => "One Cake", "NameOne" => $currentName." DateOfBirth is ".$currentDayOriginal->format('dS F'));
       //var_dump($csvSingle);
       CSV::CSVcreateSingle($csvSingle);
       //var_dump($csvSingle);
