@@ -26,11 +26,11 @@ class SingleDates{
         CakeDay::DisplayOutputSingle($currentDay, $currentName,$currentDays);
       }
       elseif ($IsDateSatCurrent){
-        $currentDays = '2';
+        $currentDays = '3';
         CakeDay::DisplayOutputSingle($currentDay,$currentName,$currentDays);
       }
     elseif ($IsDateSunCurrent){
-        $currentDays = '2';
+        $currentDays = '3';
         CakeDay::DisplayOutputSingle($currentDay,$currentName,$currentDays);
       }
 
@@ -39,13 +39,13 @@ class SingleDates{
         CakeDay::DisplayOutputSingle($currentDay, $currentName,$currentDays);
       }
       elseif ($IsDateBoxCurrent){
-        $currentDays = '2';
+        $currentDays = '3';
         CakeDay::DisplayOutputSingle($currentDay, $currentName,$currentDays);
       }
 
       else
       {
-        $currentDays = '1';
+        $currentDays = '2';
         CakeDay::DisplayOutputSingle($currentDay,$currentName,$currentDays);
       }
 
