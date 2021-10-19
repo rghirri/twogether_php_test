@@ -28,6 +28,7 @@ function ThirdDate()
   $thirdValue = $lineGeneratorEmployee->current();
 
   yield $thirdValue;
+  $lineGeneratorEmployee->next();
   }
 }
 
@@ -51,11 +52,13 @@ while ($lineGeneratorEmployee->valid()) {
   $lineGeneratorEmployee->next();  
   $thirdName =  $lineGeneratorThirdValue->current()->name;
   $thirdDay =  $lineGeneratorThirdValue->current()->birthDay;
-  $lineGeneratorThirdValue->next();
-  //var_dump($thirdName);
+  //$lineGeneratorThirdValue->next();
+  var_dump($currentDay);
+  var_dump($nextDay);
+  var_dump($thirdDay);
 
   $IsDateRow = CakeDay::IsDateRow($currentDay, $nextDay, $thirdDay);
-  //$IsDateSingle = CakeDay::IsDateSingle($currentDay, $nextDay, $thirdDay);
+  $IsDateSingle = CakeDay::IsDateSingle($currentDay, $nextDay, $thirdDay);
  // $IsDateDup = CakeDay::IsDateDup($currentDay,$nextDay,$fileName);
 
   if ($IsDateRow)
@@ -65,12 +68,13 @@ while ($lineGeneratorEmployee->valid()) {
       ThirdDates::thirdCakeDay($thirdDay, $thirdName, $fileCSVSingle);
       
   }
-  
-  
-  
-singleDates::singleCakeDay($currentDay, $currentName,$fileCSVSingle);
+  if ($IsDateSingle)
+  {
+    singleDates::singleCakeDay($currentDay, $currentName,$fileCSVSingle);
+  }
 
-  $lineGeneratorEmployee->next();  
+  // $lineGeneratorEmployee->next();  
+  
 }
 
 fclose($fileCSVRow);

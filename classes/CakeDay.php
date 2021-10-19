@@ -33,7 +33,7 @@ public static function IsDateSingle($currentDay, $nextDay, $thirdDay)
     $dateDiff = date_diff($nextDay, $currentDay);
     $dateDiffPre = date_diff($thirdDay, $currentDay);
 
-    if (($dateDiff->d != 1) || ($dateDiffPre->d != 2)){
+    if (($dateDiff->d != 1)&&($dateDiffPre->d != 2)){
       return true;
     }
     return false;
