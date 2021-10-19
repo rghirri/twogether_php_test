@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 require "./classes/DataSend.php";
 require "./classes/RowDates.php";
 require "./classes/SingleDates.php";
+require "./classes/ThirdDates.php";
 
 
 $fileName = 'employee-birthdates.txt';
@@ -24,9 +25,9 @@ function ThirdDate()
   $lineGeneratorEmployee->current();
   $lineGeneratorEmployee->next();
 
-  $thirdDate = $lineGeneratorEmployee->current();
+  $thirdValue = $lineGeneratorEmployee->current();
 
-  yield $thirdDate;
+  yield $thirdValue;
   }
 }
 
@@ -38,32 +39,38 @@ $lineGeneratorThirdValue = ThirdDate();
 
 while ($lineGeneratorEmployee->valid()) {
 
-
+  if ($lineGeneratorEmployee->current()->name == "") {
+    exit();
+  }
 
   $currentName = $lineGeneratorEmployee->current()->name;
   $currentDay = $lineGeneratorEmployee->current()->birthDay;
   $lineGeneratorEmployee->next();
   $nextName = $lineGeneratorEmployee->current()->name;
   $nextDay = $lineGeneratorEmployee->current()->birthDay;
-  $thirdDate =  $lineGeneratorThirdValue->current()->birthDay;
-  $thirdDate = $lineGeneratorThirdValue->next();
-  //var_dump($nextPre);
+  $lineGeneratorEmployee->next();  
+  $thirdName =  $lineGeneratorThirdValue->current()->name;
+  $thirdDay =  $lineGeneratorThirdValue->current()->birthDay;
+  $lineGeneratorThirdValue->next();
+  //var_dump($thirdName);
 
-  $IsDateRow = CakeDay::IsDateRow($nextDay, $currentDay, $thirdDate);
+  $IsDateRow = CakeDay::IsDateRow($currentDay, $nextDay, $thirdDay);
+  //$IsDateSingle = CakeDay::IsDateSingle($currentDay, $nextDay, $thirdDay);
  // $IsDateDup = CakeDay::IsDateDup($currentDay,$nextDay,$fileName);
 
   if ($IsDateRow)
   {
 
       RowDates::rowCakeDay($nextDay, $currentDay,$nextName, $currentName, $fileCSVRow);
+      ThirdDates::thirdCakeDay($thirdDay, $thirdName, $fileCSVSingle);
       
-  }else
-  {
-    singleDates::singleCakeDay($currentDay, $currentName,$fileCSVSingle);
   }
-
- $lineGeneratorEmployee->next();
   
+  
+  
+singleDates::singleCakeDay($currentDay, $currentName,$fileCSVSingle);
+
+  $lineGeneratorEmployee->next();  
 }
 
 fclose($fileCSVRow);

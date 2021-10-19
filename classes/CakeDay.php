@@ -8,21 +8,38 @@ require "./classes/CSV.php";
 class CakeDay{
 
 
-  public static function IsDateRow($nextDay, $currentDay, $thirdDate)
+  public static function IsDateRow($currentDay, $nextDay, $thirdDay)
   {
 
     $currentDay = new \DateTime($currentDay);
     $nextDay = new \DateTime($nextDay);
-    $thirdDate = new \DateTime($thirdDate);
+    $thirdDay = new \DateTime($thirdDay);
     $dateDiff = date_diff($nextDay, $currentDay);
-    $dateDiffPre = date_diff($thirdDate, $currentDay);
+    $dateDiffPre = date_diff($thirdDay, $currentDay);
 
-    if (($dateDiff->d == 1) && ($dateDiffPre->d != 2)){
+    if (($dateDiff->d == 1) || ($dateDiffPre->d == 2)){
       return true;
     }
     return false;
   
 }
+
+public static function IsDateSingle($currentDay, $nextDay, $thirdDay)
+  {
+
+    $currentDay = new \DateTime($currentDay);
+    $nextDay = new \DateTime($nextDay);
+    $thirdDay = new \DateTime($thirdDay);
+    $dateDiff = date_diff($nextDay, $currentDay);
+    $dateDiffPre = date_diff($thirdDay, $currentDay);
+
+    if (($dateDiff->d != 1) || ($dateDiffPre->d != 2)){
+      return true;
+    }
+    return false;
+  
+}
+
 
 public static function IsDateFri($Daytest)
 {
@@ -114,13 +131,12 @@ public static function DisplayOutputRow($nextDay, $currentDay,$nextName, $curren
       $birthCurrent = $currentDay->add(new DateInterval('P'.$currentDays.'D'));
       $birthNext = $nextDay->add(new DateInterval('P'.$nextDays.'D'));
 
-      // echo "</br></br>****************************************************************** Birthdays Row ********************************************************************************</br></br>";
-      // echo $currentName." born the ".$currentDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthCurrent->format('dS F Y')."</br></br>";
-      // echo $nextName." born the ".$nextDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthNext->format('dS F Y')."</br></br>";
+      echo "</br></br>****************************************************************** Birthdays Row ********************************************************************************</br></br>";
+      echo $currentName." born the ".$currentDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthCurrent->format('dS F Y')."</br></br>";
+      echo $nextName." born the ".$nextDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthNext->format('dS F Y')."</br></br>";
        $csvRow =array("CakeDay" => " Cake day is ".$birthCurrent->format('dS F Y'), "CakeType" => " One Large Cake to share for ", "NameOne " => $currentName." DateOfBirth ".$currentDayOriginal->format('dS F'), "NameTwo" => " and ".$nextName." DateOfBirth ".$nextDayOriginal->format('dS F')."\n");
       //$csvRow = $birthCurrent->format('dS F Y').', One Large Cake '.$currentName." DateOfBirth is ".$currentDayOriginal->format('dS F')." and ".$nextName." DateOfBirth is ".$nextDayOriginal->format('dS F');
       //var_dump($csvRow);
-      
       CSV::CSVcreateRow($csvRow, $fileCSVRow);
       //var_dump($csvRow);
     
@@ -133,8 +149,8 @@ public static function DisplayOutputSingle($currentDay,$currentName, $currentDay
       $currentDay = new \DateTime($currentDay);
       $birthCurrent = $currentDay->add(new DateInterval('P'.$currentDays.'D'));
 
-      // echo "</br></br>****************************************************************** Birthdays Single ********************************************************************************</br></br>";
-      // echo $currentName." born the ".$currentDayOriginal->format('dS F'). " has one cake on ".$birthCurrent->format('dS F Y')."</br></br>";
+      echo "</br></br>****************************************************************** Birthdays Single ********************************************************************************</br></br>";
+      echo $currentName." born the ".$currentDayOriginal->format('dS F'). " has one cake on ".$birthCurrent->format('dS F Y')."</br></br>";
       
       $csvSingle =array("CakeDay" => "Cake day is ".$birthCurrent->format('dS F Y'), "CakeType" => " One Small Cake for ", "NameOne" => $currentName." DateOfBirth ".$currentDayOriginal->format('dS F')."\n");
 

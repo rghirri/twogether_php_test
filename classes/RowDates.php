@@ -27,8 +27,8 @@ class RowDates{
       $IsDateBoxCurrent = CakeDay::IsDateBox($currentDay);
       /**************************************************** */
       if ($IsDateFriNext){
-        $currentDays = '5';
-        $nextDays = '4';
+        $currentDays = '4';
+        $nextDays = '3';
         CakeDay::DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays,$fileCSVRow);
       }
       elseif ($IsDateFriCurrent){

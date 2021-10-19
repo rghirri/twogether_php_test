@@ -30,7 +30,7 @@ class SingleDates{
         CakeDay::DisplayOutputSingle($currentDay,$currentName,$currentDays,$fileCSVSingle);
       }
     elseif ($IsDateSunCurrent){
-        $currentDays = '3';
+        $currentDays = '2';
         CakeDay::DisplayOutputSingle($currentDay,$currentName,$currentDays,$fileCSVSingle);
       }
 
@@ -45,7 +45,7 @@ class SingleDates{
 
       else
       {
-        $currentDays = '2';
+        $currentDays = '1';
         CakeDay::DisplayOutputSingle($currentDay,$currentName,$currentDays,$fileCSVSingle);
       }
 
