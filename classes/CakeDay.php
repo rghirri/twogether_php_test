@@ -8,7 +8,7 @@ require "./classes/CSV.php";
 class CakeDay{
 
 
-  public static function IsDateRow($currentDay, $nextDay, $thirdDay)
+  public static function IsDateThreeRow($currentDay, $nextDay, $thirdDay)
   {
 
     $currentDay = new \DateTime($currentDay);
@@ -16,11 +16,38 @@ class CakeDay{
     $thirdDay = new \DateTime($thirdDay);
     $dateDiff = date_diff($nextDay, $currentDay);
     $dateDiffPre = date_diff($thirdDay, $currentDay);
+    //$dateDiffTwo = date_diff($thirdDay, $nextDay);
+    
 
-    if (($dateDiff->d == 1) || ($dateDiffPre->d == 2)){
+    if (($dateDiff->d == 1) && ($dateDiffPre->d == 2))
+    {
       return true;
-    }
+    }else
+    {
     return false;
+    }
+  
+}
+
+
+public static function IsDateTwoRow($currentDay, $nextDay, $thirdDay)
+  {
+
+    $currentDay = new \DateTime($currentDay);
+    $nextDay = new \DateTime($nextDay);
+    $thirdDay = new \DateTime($thirdDay);
+    $dateDiff = date_diff($nextDay, $currentDay);
+    $dateDiffPre = date_diff($thirdDay, $currentDay);
+    $dateDiffTwo = date_diff($thirdDay, $nextDay);
+    
+
+    if (($dateDiffTwo->d == 1) && ($dateDiffPre->d != 2))
+    {
+      return true;
+    }else
+    {
+    return false;
+    }
   
 }
 
@@ -33,10 +60,13 @@ public static function IsDateSingle($currentDay, $nextDay, $thirdDay)
     $dateDiff = date_diff($nextDay, $currentDay);
     $dateDiffPre = date_diff($thirdDay, $currentDay);
 
-    if (($dateDiff->d != 1)&&($dateDiffPre->d != 2)){
+    if (($dateDiff->d != 1) && ($dateDiffPre->d != 2)){
       return true;
     }
-    return false;
+  else
+  {
+  return false;
+  }
   
 }
 
