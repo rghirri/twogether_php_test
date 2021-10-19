@@ -52,7 +52,7 @@ while ($lineGeneratorEmployee->valid()) {
   $lineGeneratorEmployee->next();  
   $thirdName =  $lineGeneratorThirdValue->current()->name;
   $thirdDay =  $lineGeneratorThirdValue->current()->birthDay;
-  //$lineGeneratorThirdValue->next();
+  $lineGeneratorThirdValue->next();
   var_dump($currentDay);
   var_dump($nextDay);
   var_dump($thirdDay);
@@ -73,7 +73,7 @@ while ($lineGeneratorEmployee->valid()) {
     singleDates::singleCakeDay($currentDay, $currentName,$fileCSVSingle);
   }
 
-  // $lineGeneratorEmployee->next();  
+   $lineGeneratorEmployee->next();  
   
 }
 
