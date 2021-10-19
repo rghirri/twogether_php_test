@@ -1,5 +1,9 @@
 <?php 
-require_once "./classes/CakeDay.php";
+
+/**
+ * This class is used to test data
+ * Dates that are single date
+ */
 
 class SingleDates{
 

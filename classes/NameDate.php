@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This class is used to create name and
+ * birthday objects
+ */
+
 class NameDate{
   
   public $name;

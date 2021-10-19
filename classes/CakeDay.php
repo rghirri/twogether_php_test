@@ -3,11 +3,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require "./classes/CSV.php";
+
 
 class CakeDay{
 
-
+/**
+ * These Functions are used to test type of days in birthdays
+ */
   public static function IsDateThreeRow($currentDay, $nextDay, $thirdDay)
   {
 
@@ -16,7 +18,6 @@ class CakeDay{
     $thirdDay = new \DateTime($thirdDay);
     $dateDiff = date_diff($nextDay, $currentDay);
     $dateDiffPre = date_diff($thirdDay, $currentDay);
-    //$dateDiffTwo = date_diff($thirdDay, $nextDay);
     
 
     if (($dateDiff->d == 1) && ($dateDiffPre->d == 2))
@@ -70,6 +71,9 @@ public static function IsDateSingle($currentDay, $nextDay, $thirdDay)
   
 }
 
+/**
+ * These Functions are used to test dates days Fri, Sat, Sun, Christmas, Boxing
+ */
 
 public static function IsDateFri($Daytest)
 {
@@ -151,6 +155,11 @@ public static function IsDateBox($Daytest)
 
 }
 
+/**
+ * These two Functions are used to save output to the csv file by calling the CSVcreate
+ * also output data on screen
+ */
+
 public static function DisplayOutputRow($nextDay, $currentDay,$nextName, $currentName, $currentDays, $nextDays,$fileCSVRow)
 {
       $csvRow = [];
@@ -165,10 +174,7 @@ public static function DisplayOutputRow($nextDay, $currentDay,$nextName, $curren
       echo $currentName." born the ".$currentDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthCurrent->format('dS F Y')."</br></br>";
       echo $nextName." born the ".$nextDayOriginal->format('dS F'). " shares one large cake with coleague on ".$birthNext->format('dS F Y')."</br></br>";
        $csvRow =array("CakeDay" => " Cake day is ".$birthCurrent->format('dS F Y'), "CakeType" => " One Large Cake to share for ", "NameOne " => $currentName." DateOfBirth ".$currentDayOriginal->format('dS F'), "NameTwo" => " and ".$nextName." DateOfBirth ".$nextDayOriginal->format('dS F')."\n");
-      //$csvRow = $birthCurrent->format('dS F Y').', One Large Cake '.$currentName." DateOfBirth is ".$currentDayOriginal->format('dS F')." and ".$nextName." DateOfBirth is ".$nextDayOriginal->format('dS F');
-      //var_dump($csvRow);
-      CSV::CSVcreateRow($csvRow, $fileCSVRow);
-      //var_dump($csvRow);
+      CSV::CSVcreate($csvRow, $fileCSVRow);
     
 }
 
@@ -183,12 +189,9 @@ public static function DisplayOutputSingle($currentDay,$currentName, $currentDay
       echo $currentName." born the ".$currentDayOriginal->format('dS F'). " has one cake on ".$birthCurrent->format('dS F Y')."</br></br>";
       
       $csvSingle =array("CakeDay" => "Cake day is ".$birthCurrent->format('dS F Y'), "CakeType" => " One Small Cake for ", "NameOne" => $currentName." DateOfBirth ".$currentDayOriginal->format('dS F')."\n");
-
-      //$csvSingle = $birthCurrent->format('dS F Y').', One Small Cake '.$currentName." DateOfBirth is ".$currentDayOriginal->format('dS F');
-      //var_dump($csvSingle);
     
-      CSV::CSVcreateSingle($csvSingle, $fileCSVSingle);
-      //var_dump($csvSingle);
+      CSV::CSVcreate($csvSingle, $fileCSVSingle);
+
 }
 
 

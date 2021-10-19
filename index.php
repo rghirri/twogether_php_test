@@ -3,10 +3,14 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require "./classes/DataSend.php";
-require "./classes/RowDates.php";
-require "./classes/SingleDates.php";
-require "./classes/ThirdDates.php";
+/** This is the index file where the generator functions are
+ * for looping over the data and testing it at the same time
+ * I did use iterators as well in class EmployeeData
+ * 
+ * I used composer to load classes
+ */
+
+require 'vendor/autoload.php';
 
 
 $fileName = 'employee-birthdates.txt';
@@ -37,8 +41,6 @@ $lineGeneratorEmployee = DataSend::getEmployeeData($fileName);
 $lineGeneratorThirdValue = ThirdDate();
 
 
-//yieldPreNext();
-
 while ($lineGeneratorEmployee->valid()) {
   
 
@@ -49,14 +51,11 @@ while ($lineGeneratorEmployee->valid()) {
   $nextName = $lineGeneratorEmployee->current()->name;
   $nextDay = $lineGeneratorEmployee->current()->birthDay;
   $lineGeneratorEmployee->next();  
+  
   $thirdName =  $lineGeneratorThirdValue->current()->name;
   $thirdDay =  $lineGeneratorThirdValue->current()->birthDay;
   $lineGeneratorThirdValue->next();
   
-  var_dump($currentDay);
-  var_dump($nextDay);
-  var_dump($thirdDay);
-
   $IsDateThreeRow = CakeDay::IsDateThreeRow($currentDay, $nextDay, $thirdDay);
   $IsDateTwoRow = CakeDay::IsDateTwoRow($currentDay, $nextDay, $thirdDay);
   $IsDateSingle = CakeDay::IsDateSingle($currentDay, $nextDay, $thirdDay);
@@ -66,7 +65,6 @@ while ($lineGeneratorEmployee->valid()) {
 
       RowDates::rowThreeCakeDay($nextDay, $currentDay,$nextName, $currentName, $fileCSVRow);
       ThirdDates::thirdCakeDay($thirdDay, $thirdName, $fileCSVSingle);
-    // RowDates::rowCakeDay($nextDay, $thirdDay,$nextName, $thirdName, $fileCSVRow);
       
   }
 
@@ -79,7 +77,7 @@ while ($lineGeneratorEmployee->valid()) {
 
   if ($IsDateSingle)
   {
-    singleDates::singleCakeDay($currentDay, $currentName,$fileCSVSingle);
+    SingleDates::singleCakeDay($currentDay, $currentName,$fileCSVSingle);
   }
 
    $lineGeneratorEmployee->next();  

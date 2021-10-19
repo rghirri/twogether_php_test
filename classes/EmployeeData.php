@@ -3,7 +3,11 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require "./classes/NameDate.php";
+/**
+ * This class is used to get data from the 
+ * txt file employee-birthdates.txt
+ * I used an iterator for this
+ */
 
 class EmployeeData extends IteratorIterator {
 

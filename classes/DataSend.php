@@ -1,7 +1,10 @@
 <?php 
-require "./classes/EmployeeData.php";
 
-
+/**
+ * This class used to send data from which 
+ * was retreived in class EmployeeData.
+ * This data will be used in functions of application
+ */
 class DataSend{
 
   public static function getEmployeeData($fileName)
@@ -10,7 +13,7 @@ class DataSend{
     $EmployeeArray = new EmployeeData($fileName);
     $EmployeeArray = new FilterRows($EmployeeArray);
 
-    foreach ($EmployeeArray as $i => $lineArray) {
+    foreach ($EmployeeArray as $lineArray) {
       $lineArray = array('name' => $lineArray[0], 'birthDay' => isset($lineArray[1]) ? $lineArray[1] : null);
       $name = $lineArray['name'];
       $dateOfBirth = new \DateTime($lineArray['birthDay']);

@@ -1,5 +1,10 @@
 <?php 
-require_once "./classes/CakeDay.php";
+
+/**
+ * This class is used to test data
+ * Third date in the row
+ */
+
 
 class ThirdDates{
 
